@@ -1,5 +1,5 @@
 
-#user  nobody;
+user  nobody;
 worker_processes  1;
 
 error_log  /usr/local/nginx/logs/error.log;
@@ -22,7 +22,7 @@ http {
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  /usr/local/nginx/logs/access.log  main;
+    access_log  /usr/local/nginx/logs/access.log;
 
     sendfile        on;
     #tcp_nopush     on;
@@ -44,7 +44,7 @@ http {
             root   html;
             index  index.html index.htm;
         }
-
+        
         #error_page  404              /404.html;
 
         # redirect server error pages to the static page /50x.html
@@ -115,8 +115,8 @@ http {
     #    }
     #}
 
-    #ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+    ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
 
-    include /usr/local/nginx/conf/*.conf;
+    include /usr/local/nginx/conf.d/*.conf;
 
 }
